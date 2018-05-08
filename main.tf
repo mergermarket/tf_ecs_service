@@ -81,9 +81,9 @@ resource "aws_cloudwatch_log_group" "stderr" {
 }
 
 resource "aws_cloudwatch_log_subscription_filter" "kinesis_log_stdout_stream" {
-  count           = "${var.subscription_arn != "" ? 1 : 0}"
+  count           = "${var.log_subscription_arn != "" ? 1 : 0}"
   name            = "kinesis-log-stdout-stream-${local.service_name}"
-  destination_arn = "${var.subscription_arn}"
+  destination_arn = "${var.log_subscription_arn}"
   log_group_name  = "${local.service_name}${var.name_suffix}-stdout"
   filter_pattern  = ""
 }
