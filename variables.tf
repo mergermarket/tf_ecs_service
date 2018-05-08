@@ -133,7 +133,7 @@ variable "deployment_maximum_percent" {
   default     = "200"
 }
 
-variable "subscription_arn" {
+variable "log_subscription_arn" {
   description = "To enable logging to a kinesis stream"
   default     = ""
 }
