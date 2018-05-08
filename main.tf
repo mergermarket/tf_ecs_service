@@ -80,14 +80,10 @@ resource "aws_cloudwatch_log_group" "stderr" {
   retention_in_days = "7"
 }
 
-resource "aws_cloudwatch_log_subscription_filter" "datadog_log_stdout_stream" {
-  count           = "${var.datadog_logging ? 1 : 0}"
-  name            = "datadog-log-stdout-stream-${local.service_name}"
-  destination_arn = "${data.aws_kinesis_stream.datadog_log_stream.arn}"
+resource "aws_cloudwatch_log_subscription_filter" "kinesis_log_stdout_stream" {
+  count           = "${var.subscription_arn != "" ? 1 : 0}"
+  name            = "kinesis-log-stdout-stream-${local.service_name}"
+  destination_arn = "${var.subscription_arn}"
   log_group_name  = "${local.service_name}${var.name_suffix}-stdout"
   filter_pattern  = ""
-}
-
-data "aws_kinesis_stream" "datadog_log_stream" {
-  name = "${var.env}-datadog-log-stream"
 }
