@@ -133,7 +133,7 @@ variable "deployment_maximum_percent" {
   default     = "200"
 }
 
-variable "datadog" {
+variable "datadog_logging" {
   description = "To enable datadog logging set this variable to 'true'"
   default     = false
 }

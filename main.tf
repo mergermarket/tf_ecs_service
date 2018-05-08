@@ -81,7 +81,7 @@ resource "aws_cloudwatch_log_group" "stderr" {
 }
 
 resource "aws_cloudwatch_log_subscription_filter" "datadog_log_stdout_stream" {
-  count           = "${var.datadog_logs ? 1 : 0}"
+  count           = "${var.datadog_logging ? 1 : 0}"
   name            = "datadog-log-stdout-stream-${local.service_name}"
   destination_arn = "${data.aws_kinesis_stream.datadog_log_stream.arn}"
   log_group_name  = "${local.service_name}${var.name_suffix}-stdout"
