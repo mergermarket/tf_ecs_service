@@ -45,7 +45,7 @@ module "service_container_definition" {
   nofile_soft_ulimit = "${var.nofile_soft_ulimit}"
   mountpoint         = "${var.container_mountpoint}"
   port_mappings      = "${var.container_port_mappings}"
-  secret_names       = "${var.secret_names}"
+  team_secrets       = "${var.team_secrets}"
   common_secrets     = "${var.common_secrets}"
 
   container_env = "${merge(
