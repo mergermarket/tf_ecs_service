@@ -32,6 +32,8 @@ module "taskdef" {
   policy                = "${var.task_role_policy}"
   assume_role_policy    = "${var.assume_role_policy}"
   volume                = "${var.taskdef_volume}"
+  env                   = "${var.env}"
+  release               = "${var.release}"
 }
 
 module "service_container_definition" {
