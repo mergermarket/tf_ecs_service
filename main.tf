@@ -25,7 +25,7 @@ module "service" {
 }
 
 module "taskdef" {
-  source = "github.com/mergermarket/tf_ecs_task_definition_with_task_role?ref=secrets"
+  source = "github.com/mergermarket/tf_ecs_task_definition_with_task_role"
 
   family                = "${local.service_name}${var.name_suffix}"
   container_definitions = ["${module.service_container_definition.rendered}"]
