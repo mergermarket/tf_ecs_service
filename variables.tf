@@ -171,7 +171,7 @@ variable "team_secrets" {
 }
 
 variable "common_secrets" {
-  description = "A list of common secret names that can be found in secrets manager" 
+  description = "A list of common secret names that can be found in secrets manager"
   type        = "list"
   default     = []
 }
