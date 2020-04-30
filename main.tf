@@ -11,7 +11,7 @@ module "ecs_update_monitor" {
 }
 
 module "service" {
-  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=no-target-group"
+  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=multiple_tgs"
 
   name                               = "${local.service_name}${var.name_suffix}"
   cluster                            = "${var.ecs_cluster}"
@@ -19,7 +19,7 @@ module "service" {
   container_name                     = "${lookup(var.release, "component")}${var.name_suffix}"
   container_port                     = "${var.port}"
   desired_count                      = "${var.desired_count}"
-  target_group_arn                   = "${var.target_group_arn}"
+  target_group_arns                   = "${var.target_group_arns}"
   deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
   deployment_maximum_percent         = "${var.deployment_maximum_percent}"
   tags                               = "${var.tags}"

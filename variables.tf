@@ -70,9 +70,9 @@ variable "name_suffix" {
   default     = ""
 }
 
-variable "target_group_arn" {
+variable "target_group_arns" {
   description = "The ALB target group for the service."
-  type        = "string"
+  type        = "list"
 }
 
 variable "logentries_token" {
