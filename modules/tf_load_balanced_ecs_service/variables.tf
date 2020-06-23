@@ -16,6 +16,12 @@ variable "target_group_arn" {
   default     = ""
 }
 
+variable "target_group_arn2" {
+  description = "The target group ARN"
+  type        = "string"
+  default     = ""
+}
+
 variable "cluster" {
   description = "The name of the ECS cluster to deploy the service to."
   type        = "string"
@@ -38,6 +44,11 @@ variable "container_port" {
   description = "The port on the container to associate with the load balancer."
   type        = "string"
   default     = "8000"
+}
+variable "container_port2" {
+  description = "The port on the container to associate with the load balancer."
+  type        = "string"
+  default     = "8001"
 }
 
 variable "deregistration_delay" {

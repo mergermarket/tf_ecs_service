@@ -17,6 +17,12 @@ resource "aws_ecs_service" "service" {
     container_port   = "${var.container_port}"
   }
 
+  load_balancer {
+    target_group_arn = "${var.target_group_arn2}"
+    container_name   = "${var.container_name}"
+    container_port   = "${var.container_port2}"
+  }  
+
   ordered_placement_strategy {
     type  = "spread"
     field = "attribute:ecs.availability-zone"
