@@ -42,6 +42,11 @@ variable "port" {
   description = "The port that container will be running on"
 }
 
+variable "port2" {
+  type        = "string"
+  description = "The 2nd port that container will be running on"
+}
+
 variable "cpu" {
   type        = "string"
   description = "CPU unit reservation for the container"
@@ -72,6 +77,11 @@ variable "name_suffix" {
 
 variable "target_group_arn" {
   description = "The ALB target group for the service."
+  type        = "string"
+}
+
+variable "target_group_arn2" {
+  description = "The 2nd ALB target group for the service."
   type        = "string"
 }
 
