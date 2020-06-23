@@ -3,7 +3,7 @@ locals {
 }
 
 module "ecs_update_monitor" {
-  source = "github.com/mergermarket/tf_ecs_update_monitor"
+  source = "modules/tf_ecs_update_monitor"
 
   cluster = "${var.ecs_cluster}"
   service = "${module.service.name}"
@@ -11,7 +11,7 @@ module "ecs_update_monitor" {
 }
 
 module "service" {
-  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=no-target-group"
+  source = "modules/tf_load_balanced_ecs_service"
 
   name                               = "${local.service_name}${var.name_suffix}"
   cluster                            = "${var.ecs_cluster}"
@@ -27,7 +27,7 @@ module "service" {
 }
 
 module "taskdef" {
-  source = "github.com/mergermarket/tf_ecs_task_definition_with_task_role"
+  source = "modules/tf_ecs_task_definition_with_task_role"
 
   family                = "${local.service_name}${var.name_suffix}"
   container_definitions = ["${module.service_container_definition.rendered}"]
@@ -40,7 +40,7 @@ module "taskdef" {
 }
 
 module "service_container_definition" {
-  source = "github.com/mergermarket/tf_ecs_container_definition"
+  source = "modules/tf_ecs_container_definition"
 
   name                = "${lookup(var.release, "component")}${var.name_suffix}"
   image               = "${lookup(var.release, "image_id")}"
