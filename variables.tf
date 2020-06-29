@@ -90,7 +90,7 @@ variable "target_group_arn2" {
   type        = "string"
 }
 
-variable "target_group_arn2=3" {
+variable "target_group_arn3" {
   description = "The 3rd ALB target group for the service."
   type        = "string"
 }
