@@ -208,3 +208,8 @@ variable "health_check_grace_period_seconds" {
 variable "images" {
   type = "list"
 }
+
+
+variable "ports" {
+  type = "list"
+}
