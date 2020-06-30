@@ -127,4 +127,6 @@ variable "health_check_grace_period_seconds" {
   default = "0"
 }
 
-variable "subnets" {}
+variable "subnets" {
+  type = "list"
+}

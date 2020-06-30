@@ -216,4 +216,5 @@ variable "health_check_grace_period_seconds" {
 }
 
 variable "subnets" {
+  type = "list"
 }
