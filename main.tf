@@ -28,6 +28,7 @@ module "service" {
   deployment_maximum_percent         = "${var.deployment_maximum_percent}"
   tags                               = "${var.tags}"
   health_check_grace_period_seconds  = "${var.health_check_grace_period_seconds}"
+  subnets                            = "${var.subnets}"
 }
 
 module "taskdef" {

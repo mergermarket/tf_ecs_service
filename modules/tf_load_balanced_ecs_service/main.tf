@@ -39,6 +39,10 @@ resource "aws_ecs_service" "service" {
     field = "instanceId"
   }
   
+  network_configuration {
+    subnets = "${var.subnets}"
+  }
+
   lifecycle {
     create_before_destroy = true
   }
