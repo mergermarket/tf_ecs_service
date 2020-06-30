@@ -32,7 +32,12 @@ module "taskdef" {
   source = "modules/tf_ecs_task_definition_with_task_role"
 
   family                = "${local.service_name}${var.name_suffix}"
-  container_definitions = ["${module.service_container_definition.rendered}"]
+  container_definitions = [
+    "${module.service_container_definition1.rendered}",
+    "${module.service_container_definition2.rendered}",
+    "${module.service_container_definition3.rendered}",
+    "${module.service_container_definition4.rendered}",
+  ]
   policy                = "${var.task_role_policy}"
   assume_role_policy    = "${var.assume_role_policy}"
   volume                = "${var.taskdef_volume}"
