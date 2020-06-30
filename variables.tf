@@ -213,3 +213,7 @@ variable "images" {
 variable "ports" {
   type = "list"
 }
+
+# variable container_names {
+#   type "list"
+# }

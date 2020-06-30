@@ -13,13 +13,13 @@ resource "aws_ecs_service" "service" {
 
   load_balancer {
     target_group_arn = "${var.target_group_arn}"
-    container_name   = "${var.container_name}"
+    container_name   = "${var.container_name}_1"
     container_port   = "${var.container_port}"
   }
 
   load_balancer {
     target_group_arn = "${var.target_group_arn2}"
-    container_name   = "${var.container_name}"
+    container_name   = "${var.container_name}_2"
     container_port   = "${var.container_port2}"
   }  
 
