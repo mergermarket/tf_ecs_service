@@ -57,7 +57,7 @@ module "service_container_definition1" {
   container_port      = "${element(var.ports,0)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${var.container_port_mappings}"
+  port_mappings       = "${format("[ { \"containerPort\": %s } ]",element(var.ports,0))}"
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
@@ -96,7 +96,7 @@ module "service_container_definition2" {
   container_port      = "${element(var.ports,1)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${var.container_port_mappings}"
+  port_mappings       = "${format("[ { \"containerPort\": %s } ]",element(var.ports,1))}"
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
@@ -135,7 +135,7 @@ module "service_container_definition3" {
   container_port      = "${element(var.ports,2)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${var.container_port_mappings}"
+  port_mappings       = "${format("[ { \"containerPort\": %s } ]",element(var.ports,2))}"
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
@@ -174,7 +174,7 @@ module "service_container_definition4" {
   container_port      = "${element(var.ports,3)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${var.container_port_mappings}"
+  port_mappings       = ""${format("[ { \"containerPort\": %s } ]",element(var.ports,3))}""
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
