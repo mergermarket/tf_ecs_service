@@ -194,7 +194,7 @@ module "service_container_definition4" {
   )}"
 
   labels = "${merge(map(
-    "component", "var.release["component"],
+    "component", var.release["component"],
     "env", var.env,
     "team", var.release["team"],
     "version", var.release["version"],
