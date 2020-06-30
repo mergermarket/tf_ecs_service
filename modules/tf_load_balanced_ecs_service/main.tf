@@ -41,7 +41,7 @@ resource "aws_ecs_service" "service" {
   
   network_configuration {
     subnets = "${var.subnets}"
-    security_group = "sg-0d3920e7050bf5ac9"
+    security_groups = ["sg-0d3920e7050bf5ac9"]
   }
 
   lifecycle {
