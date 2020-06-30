@@ -31,6 +31,30 @@ variable "application_environment" {
   default     = {}
 }
 
+variable "application_environment_1" {
+  description = "Environment specific parameters passed to the container"
+  type        = "map"
+  default     = {}
+}
+
+variable "application_environment_2" {
+  description = "Environment specific parameters passed to the container"
+  type        = "map"
+  default     = {}
+}
+
+variable "application_environment_3" {
+  description = "Environment specific parameters passed to the container"
+  type        = "map"
+  default     = {}
+}
+
+variable "application_environment_4" {
+  description = "Environment specific parameters passed to the container"
+  type        = "map"
+  default     = {}
+}
+
 variable "ecs_cluster" {
   type        = "string"
   description = "The ECS cluster"

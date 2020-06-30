@@ -73,7 +73,7 @@ module "service_container_definition1" {
       "VERSION",  "${lookup(var.release, "version")}"
     ),
     var.common_application_environment,
-    var.application_environment,
+    var.application_environment_1,
     var.secrets
   )}"
 
@@ -112,7 +112,7 @@ module "service_container_definition2" {
       "VERSION",  "${lookup(var.release, "version")}"
     ),
     var.common_application_environment,
-    var.application_environment,
+    var.application_environment_2,
     var.secrets
   )}"
 
@@ -151,7 +151,7 @@ module "service_container_definition3" {
       "VERSION",  "${lookup(var.release, "version")}"
     ),
     var.common_application_environment,
-    var.application_environment,
+    var.application_environment_3,
     var.secrets
   )}"
 
@@ -190,7 +190,7 @@ module "service_container_definition4" {
       "VERSION",  "${lookup(var.release, "version")}"
     ),
     var.common_application_environment,
-    var.application_environment,
+    var.application_environment_4,
     var.secrets
   )}"
 
