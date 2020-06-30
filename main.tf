@@ -17,8 +17,8 @@ module "service" {
   cluster                            = "${var.ecs_cluster}"
   task_definition                    = "${module.taskdef.arn}"
   container_name                     = "${lookup(var.release, "component")}${var.name_suffix}"
-  container_port                     = "${var.port}"
-  container_port2                     = "${var.port2}"
+  container_port                     = "${element(var.ports,0)}"
+  container_port2                     = "${element(var.ports,1)}"
   desired_count                      = "${var.desired_count}"
   target_group_arn                   = "${var.target_group_arn}"
   target_group_arn2                   = "${var.target_group_arn2}"
@@ -135,7 +135,7 @@ module "service_container_definition3" {
   container_port      = "${element(var.ports,2)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${format("[ { \"containerPort\": %s } ]",element(var.ports,2))}"
+  port_mappings       = ""
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
@@ -174,7 +174,7 @@ module "service_container_definition4" {
   container_port      = "${element(var.ports,3)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${format("[ { \"containerPort\": %s } ]",element(var.ports,3))}"
+  port_mappings       = ""
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 

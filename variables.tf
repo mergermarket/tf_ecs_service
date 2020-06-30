@@ -37,16 +37,6 @@ variable "ecs_cluster" {
   default     = "default"
 }
 
-variable "port" {
-  type        = "string"
-  description = "The port that container will be running on"
-}
-
-variable "port2" {
-  type        = "string"
-  description = "The 2nd port that container will be running on"
-}
-
 variable "cpu" {
   type        = "string"
   description = "CPU unit reservation for the container"
@@ -213,7 +203,3 @@ variable "images" {
 variable "ports" {
   type = "list"
 }
-
-# variable container_names {
-#   type "list"
-# }
