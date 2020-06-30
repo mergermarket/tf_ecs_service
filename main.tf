@@ -174,7 +174,7 @@ module "service_container_definition4" {
   container_port      = "${element(var.ports,3)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = ""${format("[ { \"containerPort\": %s } ]",element(var.ports,3))}""
+  port_mappings       = "${format("[ { \"containerPort\": %s } ]",element(var.ports,3))}"
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
