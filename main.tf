@@ -41,17 +41,17 @@ module "taskdef" {
   network_mode          = "${var.network_mode}"
 }
 
-module "service_container_definition" {
+module "service_container_definition1" {
   source = "modules/tf_ecs_container_definition"
 
-  name                = "${lookup(var.release, "component")}${var.name_suffix}"
-  image               = "${lookup(var.release, "image_id")}"
+  name                = "${lookup(var.release, "component")}${var.name_suffix}_1"
+  image               = "${element(var.images,0)}"
   cpu                 = "${var.cpu}"
   memory              = "${var.memory}"
-  container_port      = "${var.port}"
+  container_port      = "${element(var.port,0)}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
-  port_mappings       = "${var.container_port_mappings}"
+  port_mappings       = "${element(var.container_port_mappings,0)}"
   application_secrets = "${var.application_secrets}"
   platform_secrets    = "${var.platform_secrets}"
 
@@ -79,6 +79,124 @@ module "service_container_definition" {
     "logentries.token", var.logentries_token
   ), var.container_labels)}"
 }
+
+module "service_container_definition2" {
+  source = "modules/tf_ecs_container_definition"
+
+  name                = "${lookup(var.release, "component")}${var.name_suffix}_2"
+  image               = "${element(var.images,1)}"
+  cpu                 = "${var.cpu}"
+  memory              = "${var.memory}"
+  container_port      = "${element(var.port,1)}"
+  nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
+  mountpoint          = "${var.container_mountpoint}"
+  port_mappings       = "${element(var.container_port_mappings,1)}"
+  application_secrets = "${var.application_secrets}"
+  platform_secrets    = "${var.platform_secrets}"
+
+  container_env = "${merge(
+    map(
+      "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDOUT", "${local.service_name}${var.name_suffix}-stdout",
+      "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDERR", "${local.service_name}${var.name_suffix}-stderr",
+      "STATSD_HOST", "172.17.42.1",
+      "STATSD_PORT", "8125",
+      "STATSD_ENABLED", "true",
+      "ENV_NAME", "${var.env}",
+      "COMPONENT_NAME",  "${lookup(var.release, "component")}",
+      "VERSION",  "${lookup(var.release, "version")}"
+    ),
+    var.common_application_environment,
+    var.application_environment,
+    var.secrets
+  )}"
+
+  labels = "${merge(map(
+    "component", var.release["component"],
+    "env", var.env,
+    "team", var.release["team"],
+    "version", var.release["version"],
+    "logentries.token", var.logentries_token
+  ), var.container_labels)}"
+}
+
+module "service_container_definition3" {
+  source = "modules/tf_ecs_container_definition"
+
+  name                = "${lookup(var.release, "component")}${var.name_suffix}_3"
+  image               = "${element(var.images,2)}"
+  cpu                 = "${var.cpu}"
+  memory              = "${var.memory}"
+  container_port      = "${element(var.port,2)}"
+  nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
+  mountpoint          = "${var.container_mountpoint}"
+  port_mappings       = "${element(var.container_port_mappings,2)}"
+  application_secrets = "${var.application_secrets}"
+  platform_secrets    = "${var.platform_secrets}"
+
+  container_env = "${merge(
+    map(
+      "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDOUT", "${local.service_name}${var.name_suffix}-stdout",
+      "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDERR", "${local.service_name}${var.name_suffix}-stderr",
+      "STATSD_HOST", "172.17.42.1",
+      "STATSD_PORT", "8125",
+      "STATSD_ENABLED", "true",
+      "ENV_NAME", "${var.env}",
+      "COMPONENT_NAME",  "${lookup(var.release, "component")}",
+      "VERSION",  "${lookup(var.release, "version")}"
+    ),
+    var.common_application_environment,
+    var.application_environment,
+    var.secrets
+  )}"
+
+  labels = "${merge(map(
+    "component", var.release["component"],
+    "env", var.env,
+    "team", var.release["team"],
+    "version", var.release["version"],
+    "logentries.token", var.logentries_token
+  ), var.container_labels)}"
+}
+
+module "service_container_definition4" {
+  source = "modules/tf_ecs_container_definition"
+
+  name                = "${lookup(var.release, "component")}${var.name_suffix}_4"
+  image               = "${element(var.images,3)}"
+  cpu                 = "${var.cpu}"
+  memory              = "${var.memory}"
+  container_port      = "${element(var.port,3)}"
+  nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
+  mountpoint          = "${var.container_mountpoint}"
+  port_mappings       = "${element(var.container_port_mappings,3)}"
+  application_secrets = "${var.application_secrets}"
+  platform_secrets    = "${var.platform_secrets}"
+
+  container_env = "${merge(
+    map(
+      "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDOUT", "${local.service_name}${var.name_suffix}-stdout",
+      "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDERR", "${local.service_name}${var.name_suffix}-stderr",
+      "STATSD_HOST", "172.17.42.1",
+      "STATSD_PORT", "8125",
+      "STATSD_ENABLED", "true",
+      "ENV_NAME", "${var.env}",
+      "COMPONENT_NAME",  "${lookup(var.release, "component")}",
+      "VERSION",  "${lookup(var.release, "version")}"
+    ),
+    var.common_application_environment,
+    var.application_environment,
+    var.secrets
+  )}"
+
+  labels = "${merge(map(
+    "component", "var.release["component"],
+    "env", var.env,
+    "team", var.release["team"],
+    "version", var.release["version"],
+    "logentries.token", var.logentries_token
+  ), var.container_labels)}"
+}
+
 
 resource "aws_cloudwatch_log_group" "stdout" {
   name              = "${local.service_name}${var.name_suffix}-stdout"
