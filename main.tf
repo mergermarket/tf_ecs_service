@@ -41,7 +41,7 @@ module "taskdef" {
   volume                = "${var.taskdef_volume}"
   env                   = "${var.env}"
   release               = "${var.release}"
-  network_mode          = "awsvpc"
+  network_mode          = "${var.network_mode}"
 }
 
 module "service_container_definition" {
