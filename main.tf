@@ -11,7 +11,7 @@ module "ecs_update_monitor" {
 }
 
 module "service" {
-  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=pack_and_distinct_instance"
+  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=no-target-group"
 
   name                               = "${local.service_name}${var.name_suffix}"
   cluster                            = "${var.ecs_cluster}"
