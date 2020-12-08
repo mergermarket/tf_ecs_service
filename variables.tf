@@ -184,13 +184,37 @@ variable "network_mode" {
 
 variable "tags" {
   description = "Tags added to the ecs service resource"
-  type = "map"
-  default = {
-  }
+  type        = "map"
+  default     = {}
 }
 
 variable "health_check_grace_period_seconds" {
   description = "Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Default 0."
-  type = "string"
-  default = "0"
+  type        = "string"
+  default     = "0"
+}
+
+# The same as https://github.com/mergermarket/tf_load_balanced_ecs_service/blob/master/variables.tf#L50-L78
+variable "health_check_interval" {
+  description = "The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds."
+  type        = "string"
+  default     = "5"
+}
+
+variable "health_check_timeout" {
+  description = "The amount of time, in seconds, during which no response means a failed health check."
+  type        = "string"
+  default     = "4"
+}
+
+variable "health_check_healthy_threshold" {
+  description = "The number of consecutive health checks successes required before considering an unhealthy target healthy."
+  type        = "string"
+  default     = "2"
+}
+
+variable "health_check_unhealthy_threshold" {
+  description = "The number of consecutive health check failures required before considering the target unhealthy."
+  type        = "string"
+  default     = "2"
 }
