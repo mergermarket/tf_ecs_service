@@ -24,6 +24,10 @@ module "service" {
   deployment_maximum_percent         = "${var.deployment_maximum_percent}"
   tags                               = "${var.tags}"
   health_check_grace_period_seconds  = "${var.health_check_grace_period_seconds}"
+  health_check_interval              = "${var.health_check_interval}"
+  health_check_timeout               = "${var.health_check_timeout}"
+  health_check_healthy_threshold     = "${var.health_check_healthy_threshold}"
+  health_check_unhealthy_threshold   = "${var.health_check_unhealthy_threshold}"
 }
 
 module "taskdef" {
