@@ -50,6 +50,7 @@ module "service_container_definition" {
   image               = "${lookup(var.release, "image_id")}"
   cpu                 = "${var.cpu}"
   memory              = "${var.memory}"
+  stop_timeout        = "${var.stop_timeout}"
   container_port      = "${var.port}"
   nofile_soft_ulimit  = "${var.nofile_soft_ulimit}"
   mountpoint          = "${var.container_mountpoint}"
