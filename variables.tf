@@ -146,7 +146,7 @@ variable "log_subscription_arn" {
 
 variable "allow_overnight_scaledown" {
   description = "Allow service to be scaled down"
-  default     = false
+  default     = true
 }
 
 variable "overnight_scaledown_min_count" {
