@@ -22,7 +22,15 @@ module "service" {
   target_group_arn                   = "${var.target_group_arn}"
   deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
   deployment_maximum_percent         = "${var.deployment_maximum_percent}"
-  tags                               = "${var.tags}"
+  # tags                               = "${var.tags}"
+  tags = "${merge(
+    map(
+      "env", "${var.env}",
+      "component",  "${lookup(var.release, "component")}",
+      "team",  "${lookup(var.release, "version")}"
+    ),
+    var.tags
+  )}"
   health_check_grace_period_seconds  = "${var.health_check_grace_period_seconds}"
   health_check_interval              = "${var.health_check_interval}"
   health_check_timeout               = "${var.health_check_timeout}"
