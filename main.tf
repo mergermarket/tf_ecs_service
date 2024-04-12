@@ -4,6 +4,10 @@ locals {
 
 module "ecs_update_monitor" {
   source = "github.com/mergermarket/tf_ecs_update_monitor"
+  depends_on = [ 
+    "module.taskdef",
+    "module.service" 
+  ]
 
   cluster = "${var.ecs_cluster}"
   service = "${module.service.name}"
