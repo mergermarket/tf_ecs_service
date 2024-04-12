@@ -3,19 +3,14 @@ locals {
 }
 
 module "ecs_update_monitor" {
-  source = "github.com/mergermarket/tf_ecs_update_monitor"
-  depends_on = [ 
-    "module.taskdef",
-    "module.service" 
-  ]
-
+  source = "github.com/mergermarket/tf_ecs_update_monitor?ref=keir-test"
   cluster = "${var.ecs_cluster}"
   service = "${module.service.name}"
   taskdef = "${module.taskdef.arn}"
 }
 
 module "service" {
-  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=no-target-group"
+  source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=keir-test2"
 
   name                               = "${local.service_name}${var.name_suffix}"
   cluster                            = "${var.ecs_cluster}"
