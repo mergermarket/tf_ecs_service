@@ -2,13 +2,13 @@ locals {
   service_name = "${var.env}-${replace(lookup(var.release, "component"), ".", "_")}"
 }
 
-# module "ecs_update_monitor" {
-#   source = "github.com/mergermarket/tf_ecs_update_monitor"
-# 
-#   cluster = "${var.ecs_cluster}"
-#   service = "${module.service.name}"
-#   taskdef = "${module.taskdef.arn}"
-# }
+module "ecs_update_monitor" {
+  source = "github.com/mergermarket/tf_ecs_update_monitor"
+
+  cluster = "${var.ecs_cluster}"
+  service = "${module.service.name}"
+  taskdef = "${module.taskdef.arn}"
+}
 
 module "service" {
   source = "github.com/mergermarket/tf_load_balanced_ecs_service?ref=no-target-group"
